@@ -1,10 +1,13 @@
 package com.clockworkjava.kursspring.domain;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Quest {
     private String desription;
 
-    public Quest(String desription) {
-        this.desription = desription;
+    public Quest() {
+        this.desription = "Uratuj księżniczke ";
     }
 
     @Override
