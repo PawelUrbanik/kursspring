@@ -1,6 +1,7 @@
 package com.clockworkjava.kursspring;
 
 
+import com.clockworkjava.component.TestComponent;
 import com.clockworkjava.kursspring.domain.Castle;
 import com.clockworkjava.kursspring.domain.Knight;
 import com.clockworkjava.kursspring.domain.Quest;
@@ -10,6 +11,9 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Starter implements CommandLineRunner {
+
+    @Autowired
+    TestComponent testComponent;
 
     @Autowired
     Castle castle;

@@ -8,14 +8,14 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
-@Component
-@PropertySource("classpath:castle.properties")
+//@Component
+//@PropertySource("classpath:castle.properties")
 public class Castle {
 
-    @Autowired
+//    @Autowired
     Knight knight;
 
-    @Value("${my.castle.name:EastWatch}")
+//    @Value("${my.castle.name:EastWatch}")
     private String name;
 
     public Castle() {
@@ -33,13 +33,18 @@ public class Castle {
         this.name = name;
     }
 
-    @PostConstruct
+    public void setName(String name)
+    {
+        this.name=name;
+    }
+
+//    @PostConstruct
     public void build()
     {
         System.out.println("Wybudowano zamek " + name);
     }
 
-    @PreDestroy
+//    @PreDestroy
     public void tearDown(){
         System.out.println("Zaraz wyburzymy zamek " + name);
     }
