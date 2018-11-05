@@ -8,8 +8,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ImportResource;
 
 @SpringBootApplication
-@ComponentScan("com.clockworkjava.component")
-@ImportResource("classpath:config\\spring-config.xml")
+//@ComponentScan("com.clockworkjava.component")
+//@ImportResource("classpath:config\\spring-config.xml")
 public class KursspringApplication {
 
 	public static void main(String[] args) {

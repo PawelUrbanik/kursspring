@@ -13,10 +13,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class KursspringApplicationTests {
 
-	@Autowired
+//	@Autowired
 	Knight knight;
 
-	@Autowired
+//	@Autowired
 	Castle castle;
 
 	@Test
