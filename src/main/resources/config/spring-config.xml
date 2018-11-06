@@ -16,7 +16,10 @@
         <property name="quest" ref="quest"/>
     </bean>
 
-    <bean id="zamek" class="com.clockworkjava.kursspring.domain.Castle" init-method="build" destroy-method="tearDown">
+    <bean id="zamek" class="com.clockworkjava.kursspring.domain.Castle"
+          init-method="build"
+          destroy-method="tearDown"
+          scope="prototype">
         <constructor-arg index="0" ref="knight"/>
         <property name="name" value="${my.castle.name:EastWatch}"/>
     </bean>
