@@ -11,18 +11,27 @@ import org.springframework.context.annotation.*;
 //@PropertySource("classpath:castle.properties")
 public class MainConfig {
 
-//
-//    @Bean
-//    public Quest createQuest(){
-//        return new Quest();
-//    }
-//    @Bean
+
+    @Bean
+    public Quest createQuest(){
+        return new Quest();
+    }
+    @Bean(name = "lancelot")
+    @Primary
 //    @Scope("prototype")
-//    public Knight knight(){
-//    Knight knight = new Knight("Lancelot", 23);
-//    knight.setQuest(createQuest());
-//    return knight;
-//    }
+    public Knight lancelot(){
+        Knight lancelot = new Knight("Lancelot", 23);
+        lancelot.setQuest(createQuest());
+        return lancelot;
+    }
+
+    @Bean(name = "percival")
+//    @Scope("prototype")
+    public Knight createKnightBean(){
+        Knight percival = new Knight("Percival", 21);
+        percival.setQuest(createQuest());
+        return percival;
+    }
 //
 //    @Bean(name = "zamek", initMethod = "build", destroyMethod = "tearDown")
 //    @Value("${my.castle.name}")

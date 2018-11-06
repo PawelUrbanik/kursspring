@@ -1,6 +1,7 @@
 package com.clockworkjava.kursspring.domain;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
@@ -12,7 +13,7 @@ import javax.annotation.PreDestroy;
 @PropertySource("classpath:castle.properties")
 public class Castle {
 
-    @Autowired
+//    @Autowired
     Knight knight;
 
     @Value("${my.castle.name:EastWatch}")
@@ -21,8 +22,8 @@ public class Castle {
     public Castle() {
 
     }
-
-    public Castle(Knight knight){
+    @Autowired
+    public Castle(@Qualifier(value = "lancelot") Knight knight){
         this.knight = knight;
     }
 
