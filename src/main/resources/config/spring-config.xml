@@ -30,7 +30,16 @@
     </bean>
 
     <bean id="tournament" class="com.clockworkjava.kursspring.domain.Tournament">
-    <constructor-arg index="0" ref="percival"/>
+    <property name="knights">
+        <list>
+        <ref bean="percival"/>
+        <ref bean="lancelot"/>
+        </list>
+        <!--<map>-->
+            <!--<entry key="percival" value-ref="percival"/>-->
+            <!--<entry key="lancelot" value-ref="lancelot"/>-->
+        <!--</map>-->
+    </property>
     </bean>
 
 </beans>
