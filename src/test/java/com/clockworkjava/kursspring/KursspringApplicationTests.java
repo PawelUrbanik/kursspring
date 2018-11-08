@@ -1,11 +1,10 @@
 package com.clockworkjava.kursspring;
 
-import com.clockworkjava.kursspring.domain.Castle;
+import com.clockworkjava.kursspring.domain.repository.InMemoryRepository;
 import com.clockworkjava.kursspring.domain.Knight;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -17,7 +16,7 @@ public class KursspringApplicationTests {
 	Knight knight;
 
 //	@Autowired
-	Castle castle;
+	InMemoryRepository inMemoryRepository;
 
 	@Test
 	public void contextLoads() {
@@ -27,7 +26,7 @@ public class KursspringApplicationTests {
 	public void testCastle()
 	{
 		String except= "Znaleziono zamek: Castle black Zamieszkały przez rycerza: Rycerz o imieniu Lancelot(29) Zadanie: Zadanie: Uratuj księżniczke ";
-		Assert.assertEquals(except, castle.toString());
+		Assert.assertEquals(except, inMemoryRepository.toString());
 	}
 
 }

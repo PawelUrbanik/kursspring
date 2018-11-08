@@ -2,44 +2,45 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:task="http://www.springframework.org/schema/task"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
 
     <context:component-scan base-package="com.clockworkjava"/>
-    <context:property-placeholder location="classpath:castle.properties"/>
+    <context:property-placeholder location="classpath:knightRepository.properties"/>
 
-    <bean id="quest" class="com.clockworkjava.kursspring.domain.Quest" scope="prototype" />
+    <!--<bean id="quest" class="com.clockworkjava.kursspring.domain.Quest" scope="prototype" />-->
 
-    <bean id="lancelot" class="com.clockworkjava.kursspring.domain.Knight" scope="prototype" primary="true">
-        <constructor-arg index="0" value="Lancelot" />
-        <constructor-arg index="1" value="29" />
-        <property name="quest" ref="quest"/>
-    </bean>
-    <bean id="percival" class="com.clockworkjava.kursspring.domain.Knight" scope="prototype">
-        <constructor-arg index="0" value="Percival" />
-        <constructor-arg index="1" value="22" />
-        <property name="quest" ref="quest"/>
-    </bean>
+    <!--<bean id="lancelot" class="com.clockworkjava.kursspring.domain.Knight" scope="prototype" primary="true">-->
+        <!--<constructor-arg index="0" value="Lancelot" />-->
+        <!--<constructor-arg index="1" value="29" />-->
+        <!--<property name="quest" ref="quest"/>-->
+    <!--</bean>-->
+    <!--<bean id="percival" class="com.clockworkjava.kursspring.domain.Knight" scope="prototype">-->
+        <!--<constructor-arg index="0" value="Percival" />-->
+        <!--<constructor-arg index="1" value="22" />-->
+        <!--<property name="quest" ref="quest"/>-->
+    <!--</bean>-->
 
-    <bean id="zamek" class="com.clockworkjava.kursspring.domain.Castle"
-          init-method="build"
-          destroy-method="tearDown"
-          scope="prototype">
-        <constructor-arg index="0" ref="lancelot"/>
-        <property name="name" value="${my.castle.name:EastWatch}"/>
-    </bean>
+    <!--<bean id="zamek" class="com.clockworkjava.kursspring.domain.repository.KnightRepository"-->
+          <!--init-method="build"-->
+          <!--destroy-method="tearDown"-->
+          <!--scope="prototype">-->
+        <!--<constructor-arg index="0" ref="lancelot"/>-->
+        <!--<property name="name" value="${my.castle.name:EastWatch}"/>-->
+    <!--</bean>-->
 
-    <bean id="tournament" class="com.clockworkjava.kursspring.domain.Tournament">
-    <property name="knights">
-        <list>
-        <ref bean="percival"/>
-        <ref bean="lancelot"/>
-        </list>
-        <!--<map>-->
-            <!--<entry key="percival" value-ref="percival"/>-->
-            <!--<entry key="lancelot" value-ref="lancelot"/>-->
-        <!--</map>-->
-    </property>
-    </bean>
+    <!--<bean id="tournament" class="com.clockworkjava.kursspring.domain.Tournament">-->
+    <!--<property name="knights">-->
+        <!--<list>-->
+        <!--<ref bean="percival"/>-->
+        <!--<ref bean="lancelot"/>-->
+        <!--</list>-->
+        <!--&lt;!&ndash;<map>&ndash;&gt;-->
+            <!--&lt;!&ndash;<entry key="percival" value-ref="percival"/>&ndash;&gt;-->
+            <!--&lt;!&ndash;<entry key="lancelot" value-ref="lancelot"/>&ndash;&gt;-->
+        <!--&lt;!&ndash;</map>&ndash;&gt;-->
+    <!--</property>-->
+    <!--</bean>-->
 
 </beans>
