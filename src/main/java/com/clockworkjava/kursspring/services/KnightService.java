@@ -18,4 +18,8 @@ public class KnightService {
     {
         return new ArrayList<>(knightRepository.getAllKnights());
     }
+
+    public void saveKnight(Knight knight) {
+        knightRepository.createKnight(knight);
+    }
 }

@@ -15,4 +15,6 @@ public interface KnightRepository {
     void deleteKnight(String name);
 
     void build();
+
+    void createKnight(Knight knight);
 }

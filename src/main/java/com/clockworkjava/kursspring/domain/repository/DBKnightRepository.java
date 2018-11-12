@@ -40,4 +40,9 @@ public class DBKnightRepository implements KnightRepository {
     public void build() {
 
     }
+
+    @Override
+    public void createKnight(Knight knight) {
+        throw new NotImplementedException();
+    }
 }
