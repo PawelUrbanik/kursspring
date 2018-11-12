@@ -37,6 +37,13 @@ public class Knight {
         this.age = age;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public void setQuest(Quest quest) {
         System.out.println("Wstawan zadanie dla rycerza");

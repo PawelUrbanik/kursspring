@@ -1,6 +1,7 @@
 package com.clockworkjava.kursspring.domain.repository;
 
 import com.clockworkjava.kursspring.domain.Knight;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
@@ -8,6 +9,7 @@ import javax.annotation.PostConstruct;
 import java.util.Collection;
 
 @Repository
+@Profile("prod")
 public class DBKnightRepository implements KnightRepository {
     @Override
     public void createKnight(String name, int age) {
