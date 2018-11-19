@@ -10,6 +10,7 @@
 </head>
     <body>
         <div class="container">
+            <p>Posiadane złoto: <span th:text="${playerInformation.gold}"/> </p>
             <form class="form-horizontal" th:object="${knight}" th:action="@{/knights}" method="post">
                 <div class="form-group">
                     <label class="control-label">Imię:</label>
