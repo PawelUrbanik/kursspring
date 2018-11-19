@@ -22,4 +22,12 @@ public class KnightService {
     public void saveKnight(Knight knight) {
         knightRepository.createKnight(knight);
     }
+
+    public Knight getKnight(Integer id) {
+        return knightRepository.getKnightById(id);
+    }
+
+    public void deleteKnight(Integer id) {
+        knightRepository.deleteKnight(id);
+    }
 }
