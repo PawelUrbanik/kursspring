@@ -1,6 +1,7 @@
 package com.clockworkjava.kursspring.domain.repository;
 
 import com.clockworkjava.kursspring.domain.Knight;
+import com.clockworkjava.kursspring.utils.Ids;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
@@ -14,7 +15,7 @@ import java.util.Optional;
 @Profile("dev")
 public class InMemoryRepository implements KnightRepository {
 
-    private Map<Integer, Knight> knights = new HashMap<>();
+    private Map<Integer, Knight> knights;
 
     public InMemoryRepository() {}
 
@@ -22,6 +23,7 @@ public class InMemoryRepository implements KnightRepository {
     @PostConstruct
     public void build()
     {
+        knights = new HashMap<>();
         createKnight("Lancelot", 29);
         createKnight("Percival", 25);
     }
@@ -30,7 +32,7 @@ public class InMemoryRepository implements KnightRepository {
     public void createKnight(String name, int age)
     {
         Knight newKnight = new Knight(name, age);
-        newKnight.setId(getNewId());
+        newKnight.setId(Ids.getNewId(knights.keySet()));
         knights.put(newKnight.getId(), newKnight);
     }
 
@@ -55,7 +57,14 @@ public class InMemoryRepository implements KnightRepository {
 
     @Override
     public void createKnight(Knight knight) {
+        knight.setId(Ids.getNewId(knights.keySet()));
+        System.out.println(knight.getId());
         knights.put(knight.getId(), knight);
+    }
+
+    @Override
+    public void updateKnight(int id, Knight knight) {
+        knights.put(id, knight);
     }
 
     @Override
@@ -71,15 +80,4 @@ public class InMemoryRepository implements KnightRepository {
                 '}';
     }
 
-    private int getNewId() {
-        if (knights.isEmpty())
-        {
-            return 0;
-        }
-        else
-        {
-            Integer integer = knights.keySet().stream().max(Integer::max).get();
-            return integer+1;
-        }
-    }
 }

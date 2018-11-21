@@ -63,7 +63,7 @@ public class Knight {
     }
 
     public void setQuest(Quest quest) {
-        System.out.println("Wstawan zadanie dla rycerza");
+        quest.setStarted(true);
         this.quest = quest;
     }
 
@@ -83,8 +83,12 @@ public class Knight {
         this.level = level;
     }
 
+    public Quest getQuest() {
+        return quest;
+    }
+
     @Override
     public String toString() {
-        return "Rycerz o imieniu "+ name + "("+age+") Zadanie: " + quest;
+        return "Rycerz o imieniu "+ name + "("+age+") Zadanie: " + quest +" id: " +getId();
     }
 }
