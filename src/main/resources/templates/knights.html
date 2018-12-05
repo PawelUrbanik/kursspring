@@ -12,8 +12,8 @@
 
         <div class="container">
             <h1 class="text-center">Rycerze</h1>
-            <p>Aktualny czas <span th:text="${timeComponent.time}"/></p>
             <p>Posiadane złoto: <span th:text="${playerInformation.gold}"/> </p>
+            <a  th:href="${'/checkQuests'}">Podgląd</a>
         <table class="table">
             <thead>
             <tr>

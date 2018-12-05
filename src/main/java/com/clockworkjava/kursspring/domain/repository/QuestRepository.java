@@ -6,41 +6,45 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
+import javax.persistence.Entity;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 import java.util.*;
 
 @Repository
 public class QuestRepository {
 
-    Map<Integer, Quest> quests = new HashMap<>();
+    @PersistenceContext
+    EntityManager manager;
+
     final static Random RANDOM = new Random();
 
+    @Transactional
     public void createQuest(String description)
     {
-        int key = Ids.getNewId(quests.keySet());
-        quests.put(key, new Quest(key, description));
+        Quest newQuest = new Quest(description);
+        manager.persist(newQuest);
+
+        System.out.println(newQuest);
+
     }
 
     public List<Quest> getAll() {
-        return new ArrayList<>(quests.values());
+       return manager.createQuery("from Quest").getResultList();
     }
-
+    @Transactional
     public void deleteQuest(Quest quest)
     {
-        quests.remove(quest.getId());
-    }
-
-    @PostConstruct
-    public void init()
-    {
+        manager.remove(quest);
     }
 
     @Override
     public String toString() {
-        return "QuestRepository{" +
-                "questList=" + quests.toString() +
-                '}';
+        return "QuestRepository{" + manager.createQuery("from Quest", Quest.class).getResultList() +'}';
     }
 
+    @Transactional
     @Scheduled(fixedDelayString = "${questCreationDelay}", initialDelayString = "${questInitialDealy}")
     public void createRandomQuest()
     {
@@ -55,12 +59,13 @@ public class QuestRepository {
         //System.out.println("Utworzyłem zadanie o opisie " + description);
         createQuest(description);
     }
-
+    @Transactional
     public void updateQuest(Quest quest) {
-        quests.put(quest.getId(), quest);
+        manager.merge(quest);
     }
 
-    public Quest getQuest(Integer id) {
-        return quests.get(id);
+    public Quest getQuest(Integer id)
+    {
+        return manager.find(Quest.class, id);
     }
 }

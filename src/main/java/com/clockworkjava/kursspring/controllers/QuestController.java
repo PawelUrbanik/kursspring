@@ -1,7 +1,9 @@
 package com.clockworkjava.kursspring.controllers;
 
 import com.clockworkjava.kursspring.domain.Knight;
+import com.clockworkjava.kursspring.domain.PlayerInformation;
 import com.clockworkjava.kursspring.domain.Quest;
+import com.clockworkjava.kursspring.domain.repository.PlayerInformationRepository;
 import com.clockworkjava.kursspring.services.KnightService;
 import com.clockworkjava.kursspring.services.QuestService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,9 @@ public class QuestController {
     @Autowired
     QuestService questService;
 
+    @Autowired
+    PlayerInformationRepository playerInformationRepository;
+
     @RequestMapping("/assignQuest")
     public String assignQuest(@RequestParam("knightId") Integer knightId, Model model)
     {
@@ -38,6 +43,15 @@ public class QuestController {
         knightService.updateKnight(knight);
         Quest quest = knight.getQuest();
         questService.updateQuest(quest);
+        return "redirect:/knights";
+    }
+
+    @RequestMapping("/checkQuests")
+    public String checkQuests()
+    {
+
+        knightService.getMyGold();
+
         return "redirect:/knights";
     }
 }

@@ -6,13 +6,15 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
+@Entity
 public class Knight {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 //    @Value("Lancelot")
     @NotNull(message = "Pole nie może być puste")
@@ -27,6 +29,7 @@ public class Knight {
     private int level;
 
 //    @Autowired
+    @OneToOne
     private Quest quest;
 
     public Knight() {
@@ -63,7 +66,9 @@ public class Knight {
     }
 
     public void setQuest(Quest quest) {
-        quest.setStarted(true);
+        if (quest!=null) {
+            quest.setStarted(true);
+        }
         this.quest = quest;
     }
 
