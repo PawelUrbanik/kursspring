@@ -16,7 +16,19 @@ public class PlayerInformation {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
+    private String username;
+    private String password;
     private int gold =0;
+    private boolean enabled;
+
+    public PlayerInformation() {
+    }
+
+    public PlayerInformation(String username, String password) {
+        this.username = username;
+        this.password = password;
+        this.enabled = true;
+    }
 
     public int getGold() {
         return gold;
